@@ -1,0 +1,10 @@
+{
+  "name": "Diabetes_Predictor_Container",
+  "image": "ubuntu:22.04",
+  "runArgs": ["--privileged", "--network=host"],
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "eamodio.gitlens"]
+    }
+  }
+}
