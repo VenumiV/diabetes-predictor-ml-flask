@@ -1,20 +1,23 @@
-# Use the official Python base image
-FROM python:3.9-slim
+# Use an official Python runtime as base image
+FROM python:3.11-slim
 
-# Set the working directory
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file
+# Copy requirements and install
 COPY requirements.txt .
-
-# Install dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
+# Expose port 5000 for Flask
 EXPOSE 5000
 
-# Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.app:app"]
+# Run the app with Gunicorn (better for production)
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
