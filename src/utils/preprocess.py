@@ -1,5 +1,6 @@
 def preprocess(data):
     features = [
+        data['Pregnancies'],
         data['Glucose'],
         data['BloodPressure'],
         data['SkinThickness'],
