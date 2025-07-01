@@ -10,15 +10,49 @@
 <div class="container py-5">
     <h2 class="mb-4">Diabetes Prediction</h2>
 
-    <form method="POST" action="/">
+    <form method="POST" action="/predict">
         <div class="row">
-            {% for field in ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'] %}
             <div class="col-md-6 mb-3">
-                <label class="form-label">{{ field }}</label>
-                <input type="number" step="any" name="{{ field }}" class="form-control" required>
+                <label class="form-label">Pregnancies (count)</label>
+                <input type="number" name="Pregnancies" class="form-control" min="0" step="1" required placeholder="e.g. 2">
             </div>
-            {% endfor %}
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Glucose (mg/dL)</label>
+                <input type="number" name="Glucose" class="form-control" min="0" step="any" required placeholder="e.g. 120">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Blood Pressure (mmHg)</label>
+                <input type="number" name="BloodPressure" class="form-control" min="0" step="any" required placeholder="e.g. 70">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Skin Thickness (mm)</label>
+                <input type="number" name="SkinThickness" class="form-control" min="0" step="any" required placeholder="e.g. 20">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Insulin (IU/mL)</label>
+                <input type="number" name="Insulin" class="form-control" min="0" step="any" required placeholder="e.g. 85">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">BMI (kg/m²)</label>
+                <input type="number" name="BMI" class="form-control" min="0" step="0.1" required placeholder="e.g. 30.5">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Diabetes Pedigree Function (0–2)</label>
+                <input type="number" name="DiabetesPedigreeFunction" class="form-control" min="0" max="2.5" step="0.01" required placeholder="e.g. 0.627">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Age (years)</label>
+                <input type="number" name="Age" class="form-control" min="0" max="150" step="1" required placeholder="e.g. 45">
+            </div>
         </div>
+
         <button type="submit" class="btn btn-primary mt-3">Predict</button>
     </form>
 
