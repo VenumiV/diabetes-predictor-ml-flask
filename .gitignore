@@ -174,5 +174,10 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+
 Miniforge3-Linux-x86_64.sh
-.Trash-0
+
+# Ignore the trash folder
+.Trash-0/
+
