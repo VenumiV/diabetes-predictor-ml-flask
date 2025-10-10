@@ -28,7 +28,7 @@ p {
   color: #7a7a7a;
 }
 
-.btn-primary, .btn-secondary, .btn-ternary {
+.btn-primary, .btn-secondary, .btn-ternary, .btn-secondary-1 {
   display: inline-block;
   border: none;
   border-radius: 25px;
@@ -55,7 +55,7 @@ p {
 
 .btn-secondary {
   background-color: #495057;
-    border-radius: 5px;
+  border-radius: 5px;
   color: white;
   margin-left: 0.5rem;
 }
@@ -63,6 +63,18 @@ p {
 .btn-secondary:hover {
   background-color: #343a40;
 }
+
+.btn-secondary-1 {
+  background-color: #1aa191;
+  border-radius: 5px;
+  color: white;
+  
+}
+
+.btn-secondary-1:hover {
+  background-color: #2c6660; 
+}
+
 
 .btn-ternary {
   background-color: #495057;
