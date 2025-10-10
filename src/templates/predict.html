@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Diabetes Predictor</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="predict-page">
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <div class="nav-buttons">
+      <a href="bmi.html" class="btn-secondary">BMI Calculator</a>
+      <a href="#" class="btn-secondary">DPF Calculator</a>
+    </div>
+  </header>
+
+  <h2>Smart Diabetes Predictor</h2>
+
+  <form id="predictForm" class="predict-form">
+    <div class="form-grid">
+      <div>
+        <label>Pregnancies (count)</label>
+        <input type="number" id="pregnancies" placeholder="e.g. 2" required>
+      </div>
+      <div>
+        <label>Glucose (mg/dL)</label>
+        <input type="number" id="glucose" placeholder="e.g. 120" required>
+      </div>
+      <div>
+        <label>Blood Pressure (mmHg)</label>
+        <input type="number" id="bp" placeholder="e.g. 80" required>
+      </div>
+      <div>
+        <label>Skin Thickness (mm)</label>
+        <input type="number" id="skin" placeholder="e.g. 20" required>
+      </div>
+      <div>
+        <label>Insulin (IU/mL)</label>
+        <input type="number" id="insulin" placeholder="e.g. 80" required>
+      </div>
+      <div>
+        <label>BMI (kg/m²)</label>
+        <input type="number" id="bmi" step="0.1" placeholder="e.g. 25.3" required>
+      </div>
+      <div>
+        <label>Diabetes Pedigree Function (0–2)</label>
+        <input type="number" id="dpf" step="0.01" placeholder="e.g. 0.47" required>
+      </div>
+      <div>
+        <label>Age (yrs)</label>
+        <input type="number" id="age" placeholder="e.g. 35" required>
+      </div>
+    </div>
+
+  </form>
+
+  <div>
+    <button type="submit" class="btn-primary">Check Diabetes Risk</button>
+  </div>
+  <div class="result-box">
+    <p>Prediction Result: <span id="prediction">{ }</span></p>
+  </div>
+
+  <img src="assets/hand.png" alt="Hand" class="hand-img" />
+  <script>
+    document.getElementById('predictForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        pregnancies: +document.getElementById('pregnancies').value,
+        glucose: +document.getElementById('glucose').value,
+        bp: +document.getElementById('bp').value,
+        skin: +document.getElementById('skin').value,
+        insulin: +document.getElementById('insulin').value,
+        bmi: +document.getElementById('bmi').value,
+        dpf: +document.getElementById('dpf').value,
+        age: +document.getElementById('age').value
+      };
+
+      const res = await fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      document.getElementById('prediction').textContent = result.prediction;
+    });
+  </script>
+</body>
+</html>
