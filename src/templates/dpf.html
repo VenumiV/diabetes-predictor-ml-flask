@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DPF Calculator | Neural Net Nuts</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+   <header>
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <div class="nav-buttons">
+      <a href="predict.html" class="btn-secondary">Diabetes Predictor</a>
+      <a href="dpf.html" class="btn-secondary">DPF Calculator</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="calculator-section">
+      <h2>Diabetes Pedigree Function Calculator</h2>
+      <p class="desc">
+        Estimate your genetic risk factor based on family history and relationships.
+      </p>
+
+      <form action="{{ url_for('dpf') }}" method="POST" class="form-card">
+        <div class="form-group">
+          <label for="num_diabetic">Number of diabetic relatives:</label>
+          <input type="number" name="num_diabetic" id="num_diabetic" min="0" required />
+        </div>
+
+        <div class="form-group">
+          <label for="total_relatives">Total number of relatives considered:</label>
+          <input type="number" name="total_relatives" id="total_relatives" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="relation_strength">Average relation strength (0.1 - 1.0):</label>
+          <input type="number" name="relation_strength" id="relation_strength" step="0.1" min="0.1" max="1.0" required />
+        </div>
+
+        <div class="form-group">
+          <label for="age_factor">Age factor (e.g. 1.0 - 2.0):</label>
+          <input type="number" name="age_factor" id="age_factor" step="0.1" min="0.5" max="2.0" required />
+        </div>
+
+        <button type="submit" class="btn">Calculate DPF</button>
+      </form>
+
+      <div class="result-card">
+        <h3>Your DPF Value:</h3>
+        <p class="result">{{ '%.3f'|format(dpf_result) }}</p>
+        <p class="note">
+          (Higher DPF indicates higher genetic risk of diabetes)
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

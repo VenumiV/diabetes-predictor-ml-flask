@@ -11,7 +11,7 @@
     <img src="assets/logo.png" alt="Logo" class="logo" />
     <div class="nav-buttons">
       <a href="bmi.html" class="btn-secondary">BMI Calculator</a>
-      <a href="#" class="btn-secondary">DPF Calculator</a>
+      <a href="dpf.html" class="btn-secondary">DPF Calculator</a>
     </div>
   </header>
 
@@ -53,11 +53,13 @@
       </div>
     </div>
 
+    <br>
+    <div>
+      <button type="submit" class="btn-primary">Check Diabetes Risk</button>
+    </div>
   </form>
 
-  <div>
-    <button type="submit" class="btn-primary">Check Diabetes Risk</button>
-  </div>
+  
   <div class="result-box">
     <p>Prediction Result: <span id="prediction">{ }</span></p>
   </div>
@@ -87,5 +89,6 @@
       document.getElementById('prediction').textContent = result.prediction;
     });
   </script>
+  
 </body>
 </html>

@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #edf0ed;
+  background-color: #fafafa;
   margin: 0;
   text-align: center;
   color: #2c6660;
@@ -13,11 +13,11 @@ body {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 38px;
 }
 
 h1, h2 {
@@ -34,7 +34,8 @@ p {
   border-radius: 25px;
   padding: 0.8rem 2rem;
   margin-top: 1rem;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 50;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -103,6 +104,7 @@ header {
   max-width: 900px;
   margin: 2rem auto;
   background: #edf0ed;
+  border-radius: 15px;
   padding: 1rem;
 }
 
@@ -128,4 +130,19 @@ input {
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+}
+
+footer {
+  /* Position the element relative to the viewport */
+  position: fixed;
+  /* Attach the element to the bottom edge */
+  bottom: 0;
+  /* Stretch the element across the entire viewport width */
+  left: 0;
+  width: 100%;
+  /* Optional: add styles like background color */
+  background-color: #33333300;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }
