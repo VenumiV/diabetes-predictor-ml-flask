@@ -3,57 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DPF Calculator | Neural Net Nuts</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <title>DPF Calculator</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-   <header>
+<body class="dpf-page">
+  <header>
     <img src="assets/logo.png" alt="Logo" class="logo" />
     <div class="nav-buttons">
-      <a href="predict.html" class="btn-secondary">Diabetes Predictor</a>
-      <a href="dpf.html" class="btn-secondary">DPF Calculator</a>
+      <a href="predict.html" class="btn-secondary-1">Diabetes Predictor</a>
+      <a href="bmi.html" class="btn-secondary">BMI Calculator</a>
     </div>
   </header>
 
-  <main class="container">
-    <section class="calculator-section">
-      <h2>Diabetes Pedigree Function Calculator</h2>
-      <p class="desc">
-        Estimate your genetic risk factor based on family history and relationships.
-      </p>
+  <h2>Diabetes Pedigree Function (DPF) Calculator</h2>
 
-      <form action="{{ url_for('dpf') }}" method="POST" class="form-card">
-        <div class="form-group">
-          <label for="num_diabetic">Number of diabetic relatives:</label>
-          <input type="number" name="num_diabetic" id="num_diabetic" min="0" required />
-        </div>
-
-        <div class="form-group">
-          <label for="total_relatives">Total number of relatives considered:</label>
-          <input type="number" name="total_relatives" id="total_relatives" min="1" required />
-        </div>
-
-        <div class="form-group">
-          <label for="relation_strength">Average relation strength (0.1 - 1.0):</label>
-          <input type="number" name="relation_strength" id="relation_strength" step="0.1" min="0.1" max="1.0" required />
-        </div>
-
-        <div class="form-group">
-          <label for="age_factor">Age factor (e.g. 1.0 - 2.0):</label>
-          <input type="number" name="age_factor" id="age_factor" step="0.1" min="0.5" max="2.0" required />
-        </div>
-
-        <button type="submit" class="btn">Calculate DPF</button>
-      </form>
-
-      <div class="result-card">
-        <h3>Your DPF Value:</h3>
-        <p class="result">{{ '%.3f'|format(dpf_result) }}</p>
-        <p class="note">
-          (Higher DPF indicates higher genetic risk of diabetes)
-        </p>
+  <form id="dpfForm" class="predict-form">
+    <div class="form-grid">
+      <div>
+        <label>Your Age</label>
+        <input type="number" id="age" placeholder="e.g. 45" required />
       </div>
-    </section>
-  </main>
+
+      <div>
+        
+      </div>
+
+      <div>
+        <label>No. of First-Degree Relatives (parents/siblings) with Diabetes</label>
+        <input type="number" id="first_relatives" placeholder="e.g. 2" required />
+      </div>
+
+      <div>
+        <label>Average Age of First-Degree Relatives (years)</label>
+        <input type="number" id="first_avg_age" placeholder="e.g. 50" required />
+      </div>
+
+      <div>
+        <label>No. of Second-Degree Relatives (grandparents, aunts/uncles)</label>
+        <input type="number" id="second_relatives" placeholder="e.g. 3" required />
+      </div>
+
+      <div>
+        <label>Average Age of Second-Degree Relatives (years)</label>
+        <input type="number" id="second_avg_age" placeholder="e.g. 48" required />
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <button type="button" class="btn-ternary" onclick="calculateDPF()">Calculate</button>
+    </div>
+  </form>
+
+  <div class="result-box">
+    <p>DPF Value: <span id="dpfResult">{ }</span></p>
+  </div>
+
+  <img src="assets/hand.png" alt="Hand" class="hand-img" />
+
+  <script>
+    function calculateDPF() {
+      const age = parseFloat(document.getElementById('age').value);
+      const firstRel = parseFloat(document.getElementById('first_relatives').value);
+      const firstAvg = parseFloat(document.getElementById('first_avg_age').value);
+      const secondRel = parseFloat(document.getElementById('second_relatives').value);
+      const secondAvg = parseFloat(document.getElementById('second_avg_age').value);
+
+      if (isNaN(age) || isNaN(firstRel) || isNaN(firstAvg) || isNaN(secondRel) || isNaN(secondAvg)) {
+        document.getElementById('dpfResult').textContent = "Please fill all fields correctly.";
+        return;
+      }
+
+      // Placeholder formula — replace with ML model result or Flask API response
+      const dpf = ((firstRel * 0.4) + (secondRel * 0.2)) / (age / 50);
+      document.getElementById('dpfResult').textContent = dpf.toFixed(3);
+    }
+  </script>
 </body>
 </html>
