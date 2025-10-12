@@ -59,12 +59,25 @@
     </div>
   </form>
 
-  
-  <div class="result-box">
-    <p>Prediction Result: <span id="prediction">{ }</span></p>
+  <!-- Hidden result container -->
+<div id="result-container" class="result-container hidden">
+  <div id="positive-card" class="result-card positive">
+    <h3>RESULT: POSITIVE</h3>
+    <p>Prediction: High Risk</p>
+    <p>Probability: <span id="positive-prob">--%</span></p>
   </div>
 
-  <img src="assets/hand.png" alt="Hand" class="hand-img" />
+  <div id="negative-card" class="result-card negative">
+    <h3>RESULT: NEGATIVE</h3>
+    <p>Prediction: Low Risk</p>
+    <p>Probability: <span id="negative-prob">--%</span></p>
+  </div>
+</div>
+
+<img src="assets/hand.png" alt="Hand" class="hand-img" />
+<script src="js/predict.js"></script>
+
+   
   <script>
     document.getElementById('predictForm').addEventListener('submit', async (e) => {
       e.preventDefault();

@@ -25,7 +25,7 @@ h1, h2 {
 }
 
 p {
-  color: #7a7a7a;
+  color: #c3c3c3;
 }
 
 .btn-primary, .btn-secondary, .btn-ternary, .btn-secondary-1 {
@@ -159,4 +159,44 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
+}
+.hidden {
+  display: none;
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.result-card {
+  display: none;
+  width: 400px;
+  padding: 1.5rem;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.result-card.positive {
+  background: linear-gradient(145deg, #c52b2b, #5a1d1d);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+}
+
+.result-card.negative {
+  background: linear-gradient(145deg, #1aa191, #1f5c56);
+  box-shadow: 0 0 25px rgba(32, 191, 169, 0.7);
+}
+
+.result-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.result-card p {
+  margin: 0.3rem 0;
 }
