@@ -11,8 +11,8 @@
 <header>
   <img src="{{ url_for('static', filename='assets/logo.png') }}" style="width: 100px;">
   <div class="nav-buttons">
-    <a href="bmi.html" class="btn-secondary">BMI Calculator</a>
-    <a href="dpf.html" class="btn-secondary">DPF Calculator</a>
+    <a href="{{ url_for('ui.show_bmi_page') }}" class="btn-secondary">BMI Calculator</a>
+    <a href="{{ url_for('ui.show_dpf_page') }}" class="btn-secondary">DPF Calculator</a>
   </div>
 </header>
 
@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<img src="{{ url_for('static', filename='assets/hand.png') }}" alt="Hand" class="hand-img" />
+<img src="{{ url_for('static', filename='assets/hand.png') }}" alt="Hand" class="hand-img" style="width: 15%;" />
 <script src="{{ url_for('static', filename='js/predict.js') }}"></script>
 
 </body>
