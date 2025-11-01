@@ -4,20 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Diabetes Predictor</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+
+
 </head>
 <body class="welcome-page">
   <div class="container">
-    <img src="assets/logo.png" alt="Logo" class="logo" /><br>
-    <img src="assets/name.png" alt="Logo" class="logo"/>
+    <img src="{{ url_for('static', filename='assets/logo.png') }}"><br>
+    <img src="{{ url_for('static', filename='assets/name.png') }}">
+ 
     <h1>Welcome!</h1>
     <h2>Smart Diabetes Predictor</h2>
     <p>Empower Your Wellness Journey: Assess Your Diabetes Risk Today</p>
-    <a href="predict.html" class="btn-primary">Get Started →</a>
+    <a href="{{ url_for('ui.show_predict_page') }}" class="btn-primary">Get Started →</a>
+
+
   </div>
 
-  <img src="assets/hand.png" alt="Hand" class="hand-img" />
-  <img src="assets/ribbon.png" alt="Ribbon" class="ribbon-img" />
+  <!-- <img src="{{ url_for('static', filename='assets/hand.png') }}" style="width:150px;">
+  <img src="{{ url_for('static', filename='assets/ribbon.png') }}"> -->
 
 <div>  
   <footer>
