@@ -16,6 +16,14 @@ def index():
 def show_predict_page():
     return render_template('predict.html')
 
+@ui_bp.route('/bmi', methods=['GET'])
+def show_bmi_page():
+    return render_template('bmi.html')
+
+@ui_bp.route('/dpf', methods=['GET'])
+def show_dpf_page():
+    return render_template('dpf.html')
+
 @ui_bp.route('/predict', methods=['POST'])
 def predict():
     try:

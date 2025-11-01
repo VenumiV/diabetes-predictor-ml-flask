@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BMI Calculator</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body class="bmi-page">
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo" />
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" style="width: 100px;">
     <div class="nav-buttons">
-      <a href="predict.html" class="btn-secondary-1">Diabetes Predictor</a>
-      <a href="dpf.html" class="btn-secondary">DPF Calculator</a>
+      <a href="{{ url_for('ui.show_predict_page') }}" class="btn-secondary-1">Diabetes Predictor</a>
+      <a href="{{ url_for('ui.show_dpf_page') }}" class="btn-secondary">DPF Calculator</a>
     </div>
   </header>
 
